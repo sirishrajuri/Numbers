@@ -1,0 +1,41 @@
+references: Hacker rank/smart intervies/Quadraples of XOR.
+
+
+
+for example we have a+b+c+d=10
+a,b,c,d can be from array of length=1000; i.e n=1000;
+
+if we have 4 loops it will be a timed out error ,hence we have to split it as 
+a+b=k-(c+d);
+
+we have to calculated pairs of a+b , where c+d values will also be same ,
+hence n^2
+
+int n;cin>>n;
+        int a[n],b[n],c[n],d[n];
+        for(int i=0;i<n;i++){cin>>a[i];}
+        for(int i=0;i<n;i++){cin>>b[i];}
+        for(int i=0;i<n;i++){cin>>c[i];}
+        for(int i=0;i<n;i++){cin>>d[i];}
+        unordered_map<int,int> hm1,hm2;
+        long int y;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            { y=a[i]^b[j];
+                if(hm1[y]){hm1[y]++;}else{hm1[y]=1;}
+            }
+        }
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {   y=c[i]^d[j];
+                if(hm2[y]){hm2[y]++;}else{hm2[y]=1;}
+            }
+        }
+        int ans=0;
+        for(auto i:hm1)
+        {
+            if(hm2[i.first]){ans+=(hm1[i.first]*hm2[i.first]);}
+        }
+        cout<<ans<<endl;
