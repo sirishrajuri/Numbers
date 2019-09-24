@@ -1,0 +1,22 @@
+Store the Number as string and iterate over to multiply and store the ans%m
+
+
+long int t;cin>>t;
+    while(t--)
+    {
+        string s;long int x;
+        cin>>s>>x;
+        int arr[s.size()];
+        for(int i=0;i<s.size();i++)
+        {
+            arr[i]=s[i]-'0';
+        }
+        long int ans=0;
+        for(int i=0;i<s.size();i++)
+        {
+            ans=((ans*10) +arr[i])%x;
+            //cout<<arr[i]<<endl;
+        }
+        cout<<ans<<endl;
+    }
+
